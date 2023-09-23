@@ -1,73 +1,72 @@
 import { useState } from 'react';
 import Head from 'next/head';
+import SummonerContainer from '@/components/SummonerContainer';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import AddIcon from '@/components/AddIcon';
 
 export default function Home() {
-  const [summonerName, setSummonerName] = useState('');
-  const [playtime, setPlaytime] = useState<number | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [region, setRegion] = useState('na1'); // Default to North America
+  const [containers, setContainers] = useState<number[]>([1, 2]); // number of summoner containers
+  const [activeGame, setActiveGame] = useState('LoL'); // Initial state
 
-  const fetchPlaytime = async () => {
-    setLoading(true);
-    setError(null); // reset any previous errors
-
-    try {
-      // Include the region in the API request
-      const response = await fetch(`/api/getUserPlaytime?summonerName=${summonerName}&region=${region}`);
-
-      if (!response.ok) {
-        throw new Error('Failed to fetch playtime. Please ensure the summoner name is correct.')
-      }
-
-      const data = await response.json();
-      setPlaytime(data.hoursPlayed);
-
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
+  const addSummonerContainer = () => {
+    setContainers(prev => [...prev, prev.length + 1]); // simpleincrement to add a new container
   }
 
-  const formattedPlaytime = playtime?.toLocaleString();
-  const daysEquivalent = (playtime / 24).toFixed(2);
-
   return (
-    <div>
+    <div className='bg-riot-dark text-white min-h-screen'>
       <Head>
-        <title>Check Your League of Legends Playtime</title>
-        <meta name="description" content="A simple tool to check how many hours you've spent playing League of Legends." />
+        <title>Compare Your Riot Game Stats</title>
+        <meta name="description" content="A simple tool to compare your League of Legends stats with your friends." />
       </Head>
 
-      <h1>Check Your League of Legends Playtime</h1>
-      
-      <input 
-        value={summonerName} 
-        onChange={e => setSummonerName(e.target.value)} 
-        placeholder="Enter your summoner name..."
-        aria-label="Summoner Name"
-      />
-
-      <button onClick={fetchPlaytime} disabled={loading}>
-        Check Playtime
-      </button>
-      <select value={region} onChange={e => setRegion(e.target.value)}>
-        <option value="na1">NA</option>
-        <option value="euw1">EU W</option>
-        <option value="eun1">EU NE</option>
-        <option value="kr">KR</option>
-        {/*... other regions */}
-      </select>
-
-      {loading && <p>Loading...</p>}
-      {error && <p>Error: {error}</p>}
-      {playtime && (
-        <div>
-          <p>Total hours: {playtime}</p>
-          <p>Equivalent days: {playtime / 24}</p>
+      {/* Navbar */}
+      <nav className='bg-riot-dark w-full pb-0 p-5 border-b-2 border-riot-red shadow-md relative z-10'>
+        <div className='container mx-auto'>
+          <ul className='flex m-0 p-0 list-none'>
+            <li className='mr-4 m-0 p-0'>
+              <a 
+                href="#" 
+                onClick={() => setActiveGame('LoL')}
+                className={`text-xl text-white px-10 py-2 block bg-riot-red rounded-t-lg transform transition-transform duration-300 hover:scale-110 ${activeGame === 'LoL' ? 'bg-riot-primaryRed' : 'bg-riot-dark'}`}
+              >
+                  LoL
+              </a>
+            </li>
+            {/* Add other game tabs in the future */}
+          </ul>
         </div>
-      )}
+      </nav>
+
+      {/* Main Content */}
+      <div className='h-[80vh] container mx-auto mt-24'>
+        {/* Background Image Container */}
+        <div className='absolute inset-0 top-0 h-[90vh] z-0'>
+          <img src='/leagueBackground.jpg' alt='League of Legends Background Image' className='w-full h-full object-cover' />
+        </div>
+        <div className='z-10 relative'>
+          <h1 className='text-5xl mb-10 font-bold text-center'  >Compare Your League of Legends Stats</h1>  
+          <div className='flex justify-center space-x-6'>
+            {containers.map((_, index) => (
+              <SummonerContainer
+                  key={index} 
+                  index={index}
+              />
+            ))}
+            {containers.length < 5 && <AddIcon onClick={addSummonerContainer} />}
+          </div>
+          <button 
+            onClick={addSummonerContainer}
+            className='text-lol-buttonText mt-6 px-6 py-2 bg-lol-lolbutton rounded-md hover:bg-lol-lolbuttonHover hover:text-lol-buttonTextHover transition-all duration 300'
+          >
+            Add another summoner
+          </button>
+        </div>
+
+        
+      </div>
+
+      <ToastContainer />
     </div>
   );
 }
