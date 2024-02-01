@@ -21,6 +21,5 @@ export class ErrorBoundary extends Component<{}, State> {
         if (this.state.hasError) {
             return <h1>Something went wrong. Please refresh this page or try again later.</h1>;
         }
-        return this.props.children;
     }
 }
