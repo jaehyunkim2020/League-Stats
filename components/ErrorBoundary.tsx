@@ -1,15 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, ReactNode } from 'react';
+
+type Props = {
+    children: ReactNode;
+};
+
 
 type State = {
     hasError: boolean;
 };
 
-export class ErrorBoundary extends Component<{}, State> {
-    state = {
+export class ErrorBoundary extends Component<Props, State> {
+    state: State = {
         hasError: false
     };
 
-    static getDerivedStateFromError(error: Error) {
+    static getDerivedStateFromError(error: Error): State {
         return { hasError: true };
     }
 
@@ -21,5 +26,6 @@ export class ErrorBoundary extends Component<{}, State> {
         if (this.state.hasError) {
             return <h1>Something went wrong. Please refresh this page or try again later.</h1>;
         }
+        return this.props.children;
     }
 }

@@ -12,14 +12,8 @@ type Props = {
 const SummonerInput: React.FC<Props> = ({ index, value, region, onChange, onRegionChange }) => {
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const inputValue = e.target.value;
-        if (isValidPlayerName(inputValue)) {
-            onChange(inputValue);
-        } else {
-            // Optionally display a tooltip/error message if i want
-            console.log("Invalid summoner name");
-        }
-    }
+        onChange(e.target.value)
+    };
     
     return (
         <div className='flex items-center border rounded-md overflow-hidden shadow-md bg-white'>
