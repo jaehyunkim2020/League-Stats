@@ -32,18 +32,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (!summonerName || !region) {
         return res.status(400).json({ error: "Summoner name and region are required" });
     }
+
+    // Ensure summonerName and region are strings
+    const summonerNameStr = Array.isArray(summonerName) ? summonerName[0] : summonerName;
+    const regionStr = Array.isArray(region) ? region[0] : region;
     
-    if (!isValidPlayerName(summonerName as string)) {
+    if (!isValidPlayerName(summonerNameStr)) {
         return res.status(400).json({ error: "Invalid Summoner name provided." });
     }
     console.log(`2. Received summonerName: ${summonerName}, region: ${region}`); // 2. Checking received data
     
     try {
         // Fetch summoner details
-        const summonerResponse = await riotAPI.get(getSummonerByNameURL(region, summonerName));
+        const summonerResponse = await riotAPI.get(getSummonerByNameURL(regionStr, summonerNameStr));
         
         // Fetch ladder rank using id
-        const ladderRankResponse = await riotAPI.get(getLadderRankBySummonerIdURL(region, summonerResponse.data.id));
+        const ladderRankResponse = await riotAPI.get(getLadderRankBySummonerIdURL(regionStr, summonerResponse.data.id));
         if (!ladderRankResponse.data || !Array.isArray(ladderRankResponse.data)) {
             return res.status(500).json({ error: "Unexpected data format received." });
         }
