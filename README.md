@@ -48,8 +48,6 @@ I would love some extra help as there are a lot more functionalities and cool id
 8. **Contact**: Placeholder for your contact information.
 9. **Project Status**: Brief note on the current state and future plans.
 
-This format provides a comprehensive overview, making it easier for potential employers and other developers to understand, set up, and contribute to your project. 🌟💼📝
-
 ## Contact Information
 
 For any questions or discussions, feel free to contact me:
