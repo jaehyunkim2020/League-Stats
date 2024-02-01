@@ -25,12 +25,12 @@ Initially conceived to calculate total hours spent in-game, the project's scope 
 
 ## Future Enhancements
 
-Expanded Data Display: Include champion mastery, hours played (if available).
-Comparison Winner: Feature to highlight the 'winner' after comparison.
-UI/UX Improvements: Transition from square containers to more dynamic layouts.
-Analytics Integration: Incorporate Google Analytics for user interaction tracking.
-More Games: Extend support to additional games for a wider audience.
-Advanced Visualizations: Implement graphs and charts for a more intuitive data representation.
+1. **Expanded Data Display**: Include champion mastery, hours played (if available).
+2. **Comparison Winner**: Feature to highlight the 'winner' after comparison.
+3. **UI/UX Improvements**: Transition from square containers to more dynamic layouts.
+4. **Analytics Integration**: Incorporate Google Analytics for user interaction tracking.
+5. **More Games**: Extend support to additional games for a wider audience.
+6. **Advanced Visualizations**: Implement graphs and charts for a more intuitive data representation.
 
 ## Contributions
 
