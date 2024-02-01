@@ -9,7 +9,8 @@
 
 Initially conceived to calculate total hours spent in-game, the project's scope shifted due to changes in the Riot Games API. It now focuses on a comprehensive, comparative analysis of game stats, with an interface that reflects the unique branding of each game.
 
-![League of Legends Interface](https://github.com/jaehyunkim2020/league-stats/assets/77366570/7529860e-d71e-449a-894d-64c9fefee216)
+![League of Legends Interface]![Capture](https://github.com/jaehyunkim2020/league-stats/assets/77366570/b545d53f-86db-4d3d-94c4-50f54da89793)
+
 
 ## Features
 
