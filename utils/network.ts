@@ -16,6 +16,6 @@ axiosRetry(riotAPI, {
     },
     retryCondition: (error) => {
         // Only retry if it's a network error, timeout error, or 5xx status code
-        return axiosRetry.isNetworkOrIdempotentRequestError(error) || error.response?.status >= 500;
+        return axiosRetry.isNetworkOrIdempotentRequestError(error) || (error.response && error.response.status >= 500);
     }
 })
