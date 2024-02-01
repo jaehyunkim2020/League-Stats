@@ -9,7 +9,7 @@ export class ErrorBoundary extends Component<{}, State> {
         hasError: false
     };
 
-    static getDerivedStateFromError(error: any) {
+    static getDerivedStateFromError(error: Error) {
         return { hasError: true };
     }
 

@@ -11,7 +11,7 @@ type Props = {
 
 const SummonerInput: React.FC<Props> = ({ index, value, region, onChange, onRegionChange }) => {
 
-    const handleInputChange = (e) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const inputValue = e.target.value;
         if (isValidPlayerName(inputValue)) {
             onChange(inputValue);
@@ -33,7 +33,7 @@ const SummonerInput: React.FC<Props> = ({ index, value, region, onChange, onRegi
             <input
                 placeholder="Enter summoner name..."
                 value={value}
-                onChange={(e) => onChange(e.target.value)}
+                onChange={handleInputChange}
                 className='flex-grow px-4 py-2 bg-transparent appearance-none border-none focus:outline-none text-black'
             />
         </div>
