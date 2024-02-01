@@ -5,8 +5,9 @@ import { riotAPI } from '../../../utils/network';
 import { isValidPlayerName } from '@/utils/validation/playerNameValidation';
 import { handleRiotAPIError } from '@/utils/errorHandlers/riotAPIErrors';
 import { getSummonerByNameURL, getLadderRankBySummonerIdURL } from '@/utils/riotAPIEndpoints';
+import { LadderRankItem } from '@/types/lol';
 
-function processLadderRank(ladderRankData: any): any {
+function processLadderRank(ladderRankData: LadderRankItem[]): any {
     const soloRank = ladderRankData.find(rank => rank.queueType === 'RANKED_SOLO_5x5');
     if (!soloRank) {
         throw new Error("Solo rank data not found for this Summoner.");

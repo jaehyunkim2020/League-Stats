@@ -8,3 +8,12 @@ export type SummonerInfo = {
     gamesLost: number;
     winRatio: string;
 };
+
+
+export type LadderRankItem = {
+    queueType: string;
+    tier: string;
+    rank: string;
+    wins: number;
+    losses: number;
+}
