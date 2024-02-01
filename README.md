@@ -1,7 +1,7 @@
 
 # Game Stats Comparison
 
-[Live Demo](https://compare-game-stats.vercel.app/)
+[Link to the website](https://compare-game-stats.vercel.app/)
 
 ## Introduction
 
