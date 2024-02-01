@@ -64,34 +64,32 @@ const config: Config = {
       }
        },
         backgroundColor: {
-          IRON: '#43464B',
+          IRON: '#343432',
           BRONZE: '#8B4513',
           SILVER: '#C0C0C0',
-          GOLD: '#FFD700',
-          PLATINUM: '#E5E4E2',
+          GOLD: '#ffbf00',
+          PLATINUM: '#81d9dd',
           EMERALD: '#50C878',
           DIAMOND: '#1E90FF',
           MASTER: '#9932CC',
-          GRANDMASTER: '#4169E1',
+          GRANDMASTER: '#ff4248',
           CHALLENGER: '#00008B',
         },
         borderColor: {
-          IRON: '#43464B',
+          IRON: '#343432',
           BRONZE: '#8B4513',
           SILVER: '#C0C0C0',
-          GOLD: '#FFD700',
-          PLATINUM: '#E5E4E2',
+          GOLD: '#ffbf00',
+          PLATINUM: '#81d9dd',
           EMERALD: '#50C878',
           DIAMOND: '#1E90FF',
           MASTER: '#9932CC',
-          GRANDMASTER: '#4169E1',
+          GRANDMASTER: '#ff4248',
           CHALLENGER: '#00008B', 
         },
     },
   },
   plugins: [
-    require('@tailwindcss/forms'),
-    require('tailwindcss-clip-path-polyfill')
   ],
 }
 export default config;

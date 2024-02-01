@@ -4,7 +4,7 @@ import SummonerInput from './SummonerInput';
 import { SummonerInfo } from '@/types/lol';
 import { toast } from 'react-toastify';
 import { ErrorBoundary } from './ErrorBoundary';
-import { RotatingLines } from  'react-loader-spinner'
+import { ThreeDots } from  'react-loader-spinner'
 import { getRankStyles } from '@/utils/rankUtils';
 
 type Props = {
@@ -56,14 +56,15 @@ const SummonerContainer: React.FC<Props> = ({ index }) => {
     }
 
     return (
-        <div 
+        <div
             aria-live="polite" 
-            className={`w-48 h-64 border-4 ${data ? getRankStyles(data.tier) : ''} bg-opacity-25 p-4 rounded-md shadow-md transition-transform duration-300 hover:-translate-y-1 flex flex-col justify-between bg-riot-card`}>
-            {loading && <RotatingLines
-                strokeColor='red'
-                strokeWidth='5'
-                animationDuration='0.75'
-                width='96'
+            className={`gonfalon w-auto min-w-[350px] min-h-[400px] overflow-y-auto border-4 ${data ? getRankStyles(data.tier) : ''} bg-opacity-25 p-4 rounded-md shadow-md transition-transform duration-300 hover:-translate-y-1 flex flex-col items-center justify-center bg-riot-card`}>
+            {loading && <ThreeDots
+                height="80"
+                width="80"
+                radius="9"
+                color='#CDFAFA'
+                ariaLabel="three-dots-loading"
                 visible={true}
             />}
             {error && <p>Error: {error}</p>}
@@ -72,7 +73,7 @@ const SummonerContainer: React.FC<Props> = ({ index }) => {
                     <SummonerCard data={data} />
                 </ErrorBoundary>
             ) : (
-                <>
+                <div className='flex flex-col items-center space-y-4'>   
                     <SummonerInput
                         index={index}
                         value={name}
@@ -87,7 +88,7 @@ const SummonerContainer: React.FC<Props> = ({ index }) => {
                             Show Data
                         </button>
                     </div>
-                </>
+                </div>
             )}
         </div>
     );

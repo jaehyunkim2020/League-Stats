@@ -6,9 +6,9 @@ const AddIcon = ({ onClick }: { onClick: () => void }) => {
     return (
         <button 
             onClick={onClick} 
-            className='flex flex-colb items-center justify-center space-y-2 bg-riot-red hover:shadow-lg transition-shadow duration-300 px-4 py-2 rounded'
+            className='flex flex-col items-center justify-center space-y-2 bg-riot-red hover:shadow-lg transition-shadow duration-300 px-4 py-2 rounded'
         >
-            <FontAwesomeIcon icon={faCirclePlus} size="4x" style={{color: "black" }} />
+            <FontAwesomeIcon icon={faCirclePlus} size="4x" style={{color: "#C8AA6E"}}/>
         </button>
     )
 }

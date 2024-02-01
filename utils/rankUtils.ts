@@ -12,7 +12,5 @@ type Tier =
 
 
 export const getRankStyles = (rank: string) => {
-
-    console.log("Ranked passed: ", rank)
     return `border-${rank} bg-${rank} bg-opacity-25`;
 }

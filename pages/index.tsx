@@ -55,12 +55,12 @@ export default function Home() {
             ))}
             {containers.length < 5 && <AddIcon onClick={addSummonerContainer} />}
           </div>
-          <button 
+          {/* <button 
             onClick={addSummonerContainer}
             className='text-lol-buttonText mt-6 px-6 py-2 bg-lol-lolbutton rounded-md hover:bg-lol-lolbuttonHover hover:text-lol-buttonTextHover transition-all duration 300'
           >
             Add another summoner
-          </button>
+          </button> */}
         </div>
 
         
